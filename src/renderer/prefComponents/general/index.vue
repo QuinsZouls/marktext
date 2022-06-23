@@ -107,11 +107,10 @@
       </template>
       <template #children>
         <cur-select
-          description="User interface language"
+          :description="$t('User interface language')"
           :value="language"
           :options="languageOptions"
           :onChange="value => onSelectChange('language', value)"
-          :disable="true"
         ></cur-select>
       </template>
     </compound>
@@ -126,6 +125,7 @@ import CurSelect from '../common/select'
 import Bool from '../common/bool'
 import Separator from '../common/separator'
 import { isOsx } from '@/util'
+import i18n from '@/i18next.config'
 
 import {
   titleBarStyleOptions,
@@ -176,6 +176,9 @@ export default {
   },
   methods: {
     onSelectChange (type, value) {
+      if (type === 'language') {
+        i18n.changeLanguage(value)
+      }
       this.$store.dispatch('SET_SINGLE_PREFERENCE', { type, value })
     },
     selectDefaultDirectoryToOpen () {

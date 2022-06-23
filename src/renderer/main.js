@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import VueElectron from 'vue-electron'
+import I18NextVue from 'i18next-vue'
 import sourceMapSupport from 'source-map-support'
 import bootstrapRenderer from './bootstrap'
 import VueRouter from 'vue-router'
@@ -7,6 +8,7 @@ import lang from 'element-ui/lib/locale/lang/en'
 import locale from 'element-ui/lib/locale'
 import axios from './axios'
 import store from './store'
+import i18n, { i18nextOptions } from './i18next.config'
 import './assets/symbolIcon'
 import {
   Dialog,
@@ -60,7 +62,7 @@ addElementStyle()
 
 // Configure Vue
 locale.use(lang)
-
+Vue.use(I18NextVue, { i18next: i18n })
 Vue.use(Dialog)
 Vue.use(Form)
 Vue.use(FormItem)
@@ -101,8 +103,14 @@ const router = new VueRouter({
 })
 
 /* eslint-disable no-new */
-new Vue({
-  store,
-  router,
-  template: '<router-view class="view"></router-view>'
-}).$mount('#app')
+i18n.init(i18nextOptions, (error) => {
+  if (error) {
+    console.log(error)
+    return
+  }
+  new Vue({
+    store,
+    router,
+    template: '<router-view class="view"></router-view>'
+  }).$mount('#app')
+})

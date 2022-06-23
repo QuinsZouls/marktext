@@ -105,6 +105,7 @@ import { moveImageToFolder, moveToRelativeFolder, uploadImage } from '@/util/fil
 import { guessClipboardFilePath } from '@/util/clipboard'
 import { getCssForOptions, getHtmlToc } from '@/util/pdf'
 import { addCommonStyle, setEditorWidth } from '@/util/theme'
+import i18n from '@/i18next.config'
 
 import 'muya/themes/default.css'
 import '@/assets/themes/codemirror/one-dark.css'
@@ -165,7 +166,7 @@ export default {
       spellcheckerEnabled: state => state.preferences.spellcheckerEnabled,
       spellcheckerNoUnderline: state => state.preferences.spellcheckerNoUnderline,
       spellcheckerLanguage: state => state.preferences.spellcheckerLanguage,
-
+      language: state => state.preferences.language,
       currentFile: state => state.editor.currentFile,
       projectTree: state => state.project.projectTree,
 
@@ -483,7 +484,8 @@ export default {
         spellcheckerEnabled,
         spellcheckerLanguage,
         hideLinkPopup,
-        autoCheck
+        autoCheck,
+        language
       } = this
 
       // use muya UI plugins
@@ -534,7 +536,8 @@ export default {
         imageAction: this.imageAction.bind(this),
         imagePathPicker: this.imagePathPicker.bind(this),
         clipboardFilePath: guessClipboardFilePath,
-        imagePathAutoComplete: this.imagePathAutoComplete.bind(this)
+        imagePathAutoComplete: this.imagePathAutoComplete.bind(this),
+        language
       }
 
       if (/dark/i.test(theme)) {
@@ -550,7 +553,6 @@ export default {
       }
 
       const { container } = this.editor = new Muya(ele, options)
-
       // Create spell check wrapper and enable spell checking if preferred.
       this.spellchecker = new SpellChecker(spellcheckerEnabled, spellcheckerLanguage)
 
@@ -561,7 +563,9 @@ export default {
       if (typewriter) {
         this.scrollToCursor()
       }
-
+      i18n.on('languageChanged', lang => {
+        this.editor.updateLanguage(lang)
+      })
       // listen for bus events.
       bus.$on('file-loaded', this.setMarkdownToEditor)
       bus.$on('invalidate-image-cache', this.handleInvalidateImageCache)

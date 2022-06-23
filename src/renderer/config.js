@@ -15,3 +15,8 @@ export const DEFAULT_STYLE = Object.freeze({
 
 export const railscastsThemes = Object.freeze(['dark', 'material-dark'])
 export const oneDarkThemes = Object.freeze(['one-dark'])
+// I18N
+export const LANGUAGES = ['en', 'es', 'zh']
+export const FALLBACK_LANGUAGE = 'en'
+export const NAMESPACES = ['translation']
+export const DEFAULT_NAMESPACE = 'translation'

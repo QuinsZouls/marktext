@@ -17,6 +17,7 @@ import { watchers } from '../utils/imagePathAutoComplement'
 import { WindowType } from '../windows/base'
 import EditorWindow from '../windows/editor'
 import SettingWindow from '../windows/setting'
+import i18n from '../i18next.config'
 
 class App {
   /**
@@ -39,6 +40,12 @@ class App {
    * The entry point into the application.
    */
   init () {
+    // Set i18n
+    const { preferences } = this._accessor
+    const language = preferences.getItem('language')
+
+    i18n.changeLanguage(language)
+    console.log('Changed language: ', language)
     // Enable these features to use `backdrop-filter` css rules!
     if (isOsx) {
       app.commandLine.appendSwitch('enable-experimental-web-platform-features', 'true')
@@ -144,7 +151,6 @@ class App {
       autoSwitchTheme,
       theme
     } = preferences.getAll()
-
     if (startUpAction === 'folder' && defaultDirectoryToOpen) {
       const info = normalizeMarkdownPath(defaultDirectoryToOpen)
       if (info) {

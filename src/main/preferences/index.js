@@ -7,6 +7,7 @@ import log from 'electron-log'
 import { isWindows } from '../config'
 import { hasSameKeys } from '../utils'
 import schema from './schema'
+import i18n from '../i18next.config'
 
 const PREFERENCES_FILE_NAME = 'preferences'
 
@@ -37,7 +38,7 @@ class Preference extends EventEmitter {
     let defaultSettings = null
     try {
       defaultSettings = JSON.parse(fs.readFileSync(this.staticPath, { encoding: 'utf8' }) || '{}')
-
+      // Set default language
       // Set best theme on first application start.
       if (nativeTheme.shouldUseDarkColors) {
         defaultSettings.theme = 'dark'
@@ -117,6 +118,10 @@ class Preference extends EventEmitter {
     }
 
     Object.keys(settings).forEach(key => {
+      if (key === 'language') {
+        // Set i18n language
+        i18n.changeLanguage(settings[key])
+      }
       this.setItem(key, settings[key])
     })
   }

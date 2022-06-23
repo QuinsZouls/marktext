@@ -11,6 +11,7 @@ import { wordCount } from './utils'
 import ExportMarkdown from './utils/exportMarkdown'
 import ExportHtml from './utils/exportHtml'
 import ToolTip from './ui/tooltip'
+import i18n from './i18next.config'
 import './assets/styles/index.css'
 
 class Muya {
@@ -25,7 +26,9 @@ class Muya {
 
   constructor (container, options) {
     this.options = Object.assign({}, MUYA_DEFAULT_OPTION, options)
-    const { markdown } = this.options
+    const { markdown, language } = this.options
+    // Change language for i18n support
+    i18n.changeLanguage(language)
     this.markdown = markdown
     this.container = getContainer(container, this.options)
     this.eventCenter = new EventCenter()
@@ -44,6 +47,10 @@ class Muya {
     this.dragdrop = new DragDrop(this)
     this.resize = new Resize(this)
     this.mouseEvent = new MouseEvent(this)
+    i18n.on('languageChanged', lng => {
+      console.log('Vue NS muya updated')
+      this.init()
+    })
     this.init()
   }
 
@@ -62,6 +69,7 @@ class Muya {
     eventCenter.attachDOMEvent(container, 'blur', () => {
       eventCenter.dispatch('blur')
     })
+    initI18n()
   }
 
   mutationObserver () {
@@ -100,6 +108,10 @@ class Muya {
 
     // Start observing the target node for configured mutations
     observer.observe(container, config)
+  }
+
+  updateLanguage (lang = 'en') {
+    i18n.changeLanguage(lang)
   }
 
   dispatchChange = () => {
@@ -483,5 +495,71 @@ function getContainer (originContainer, options) {
   originContainer.replaceWith(container)
   return container
 }
+/**
+  * Override CSS property "content:" for i18n via adding a new <style> element
+  * Reference: https://stackoverflow.com/questions/11371550/change-hover-css-properties-with-javascript
+  */
+function initI18n () {
+  const cssOverride = `
+    div.ag-show-quick-insert-hint p.ag-paragraph.ag-active > span.ag-paragraph-content:first-of-type:empty::after {
+      content: '${i18n.t('hints.editor.newParagraph')}';
+      color: var(--editorColor10);
+    }
 
+    figure[data-role="FOOTNOTE"] > p:first-of-type .ag-paragraph-content:empty::after {
+      content: '${i18n.t('hints.editor.footnote')}';
+      color: var(--editorColor30);
+    }
+
+    pre.ag-front-matter span.ag-code-content:first-of-type:empty::after {
+      content: '${i18n.t('hints.editor.frontMatter')}';
+      color: var(--editorColor10);
+    }
+
+    pre[data-role$='code'] span.ag-language-input:empty::after {
+      content: '${i18n.t('hints.editor.langIdentifier')}';
+      color: var(--editorColor10);
+    }
+
+    pre.ag-multiple-math span.ag-code-content:first-of-type:empty::after {
+      content: '${i18n.t('hints.editor.math')};
+      color: var(--editorColor10);
+    }
+
+    pre.ag-active.ag-fence-code > code::before {
+      content: '${i18n.t('hints.editor.codeBlockFence')}';
+    }
+
+    pre.ag-active.ag-indent-code > code::before {
+      content: '${i18n.t('hints.editor.codeBlockIndent')}';
+    }
+
+    .ag-inline-image.ag-empty-image::before {
+      content: '${i18n.t('hints.editor.addImage')}';
+    }
+
+    .ag-inline-image.ag-image-fail::before {
+      content: '${i18n.t('hints.editor.loadImageFailed')}';
+    }
+
+    mark::before {
+      content: " ${i18n.t('hints.editor.highlightStart')} ";
+    }
+
+    mark::after {
+      content: " ${i18n.t('hints.editor.highlightEnd')} ";
+    }
+
+  `
+
+  const style = document.createElement('style')
+
+  if (style.styleSheet) {
+    style.styleSheet.cssText = cssOverride
+  } else {
+    style.appendChild(document.createTextNode(cssOverride))
+  }
+
+  document.getElementsByTagName('head')[0].appendChild(style)
+}
 export default Muya
