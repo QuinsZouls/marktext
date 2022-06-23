@@ -1,5 +1,6 @@
 import { ipcRenderer } from 'electron'
 import bus from '../bus'
+import i18n from '@/i18next.config'
 
 // user preference
 const state = {
@@ -121,6 +122,8 @@ const actions = {
 
     ipcRenderer.on('mt::user-preference', (e, preferences) => {
       commit('SET_USER_PREFERENCE', preferences)
+      // Change i18n language
+      i18n.changeLanguage(preferences.language)
     })
   },
 
