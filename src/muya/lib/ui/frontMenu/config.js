@@ -6,11 +6,6 @@ import { isOsx } from '../../config'
 import { quickInsertObj } from '../quickInsert/config'
 import i18n from '../../i18next.config'
 
-const wholeSubMenu = Object.keys(quickInsertObj).reduce((acc, key) => {
-  const items = quickInsertObj[key]
-  return [...acc, ...items]
-}, [])
-
 const COMMAND_KEY = isOsx ? '⌘' : '⌃'
 
 export const menu = () => {
@@ -115,6 +110,11 @@ export const getLabel = block => {
 
 export const getSubMenu = (block, startBlock, endBlock) => {
   const { type } = block
+  let quickInsert = quickInsertObj()
+  const wholeSubMenu = Object.keys(quickInsert).reduce((acc, key) => {
+    const items = quickInsert[key]
+    return [...acc, ...items]
+  }, [])
   switch (type) {
     case 'p': {
       return wholeSubMenu.filter(menuItem => {
