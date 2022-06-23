@@ -48,7 +48,6 @@ class Muya {
     this.resize = new Resize(this)
     this.mouseEvent = new MouseEvent(this)
     i18n.on('languageChanged', lng => {
-      console.log('Vue NS muya updated')
       this.init()
     })
     this.init()
