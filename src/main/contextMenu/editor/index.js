@@ -1,18 +1,9 @@
 import { Menu, MenuItem } from 'electron'
 import {
-  CUT,
-  COPY,
-  PASTE,
-  COPY_AS_MARKDOWN,
-  COPY_AS_HTML,
-  PASTE_AS_PLAIN_TEXT,
-  SEPARATOR,
-  INSERT_BEFORE,
-  INSERT_AFTER
+  menuItems
 } from './menuItems'
 import spellcheckMenuBuilder from './spellcheck'
-
-const CONTEXT_ITEMS = [INSERT_BEFORE, INSERT_AFTER, SEPARATOR, CUT, COPY, PASTE, SEPARATOR, COPY_AS_MARKDOWN, COPY_AS_HTML, PASTE_AS_PLAIN_TEXT]
+import i18n from '../../i18next.config'
 
 const isInsideEditor = params => {
   const { isEditable, editFlags, inputFieldType } = params
@@ -21,8 +12,19 @@ const isInsideEditor = params => {
 }
 
 export const showEditorContextMenu = (win, event, params, isSpellcheckerEnabled) => {
+  const {
+    CUT,
+    COPY,
+    PASTE,
+    COPY_AS_MARKDOWN,
+    COPY_AS_HTML,
+    PASTE_AS_PLAIN_TEXT,
+    SEPARATOR,
+    INSERT_BEFORE,
+    INSERT_AFTER
+  } = menuItems()
+  const CONTEXT_ITEMS = [INSERT_BEFORE, INSERT_AFTER, SEPARATOR, CUT, COPY, PASTE, SEPARATOR, COPY_AS_MARKDOWN, COPY_AS_HTML, PASTE_AS_PLAIN_TEXT]
   const { isEditable, hasImageContents, selectionText, editFlags, misspelledWord, dictionarySuggestions } = params
-
   // NOTE: We have to get the word suggestions from this event because `webFrame.getWordSuggestions` and
   //       `webFrame.isWordMisspelled` doesn't work on Windows (Electron#28684).
 
@@ -50,5 +52,11 @@ export const showEditorContextMenu = (win, event, params, isSpellcheckerEnabled)
       menu.append(new MenuItem(item))
     })
     menu.popup([{ window: win, x: event.clientX, y: event.clientY }])
+    // Update menu items
+    i18n.on('languageChanged', lang => {
+      CONTEXT_ITEMS.forEach(item => {
+        menu.append(new MenuItem(item))
+      })
+    })
   }
 }

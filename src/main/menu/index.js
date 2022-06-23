@@ -9,6 +9,7 @@ import { updateFormatMenu } from '../menu/actions/format'
 import { updateSelectionMenus } from '../menu/actions/paragraph'
 import { viewLayoutChanged } from '../menu/actions/view'
 import configureMenu, { configSettingMenu } from '../menu/templates'
+import i18n from '../i18next.config'
 
 const RECENTLY_USED_DOCUMENTS_FILE_NAME = 'recently-used-documents.json'
 const MAX_RECENTLY_USED_DOCUMENTS = 12
@@ -366,6 +367,22 @@ class AppMenu {
   }
 
   _listenForIpcMain () {
+    // Update windows menu
+    i18n.on('languageChanged', () => {
+      for (let menu of this.windowMenus) {
+        let newMenu
+        if (menu[1].type === MenuType.SETTINGS) {
+          newMenu = this._buildSettingMenu()
+        } else {
+          newMenu = this._buildEditorMenu()
+        }
+        const { activeWindowId } = this
+        if (activeWindowId === menu[0]) {
+          this._setApplicationMenu(newMenu.menu)
+        }
+        this.windowMenus.set(menu[0], newMenu)
+      }
+    })
     ipcMain.on('mt::add-recently-used-document', (e, pathname) => {
       this.addRecentlyUsedDocument(pathname)
     })
