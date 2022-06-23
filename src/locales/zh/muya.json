@@ -96,11 +96,13 @@
       "flowChart": "流程图",
       "seqDiagram": "序列图",
       "mermaid": "Mermaid 图表",
+      "plantUml": "PlantUML 图表.",
       "_descriptions": {
         "vega": "插入用 vega-lite.js 渲染的流程图。",
         "flowChart": "插入用 flowchart.js 渲染的流程图。",
         "seqDiagram": "插入用 js-sequence 渲染的序列图。",
-        "mermaid": "插入 Mermaid 图表。"
+        "mermaid": "插入 Mermaid 图表。",
+        "plantUml": "插入 PlantUML 图表."
       },
       "blockTypes": {
         "basicBlock": "基本",

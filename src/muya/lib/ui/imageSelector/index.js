@@ -4,6 +4,7 @@ import { patch, h } from '../../parser/render/snabbdom'
 import { EVENT_KEYS, URL_REG, isWin } from '../../config'
 import { getUniqueId, getImageInfo as getImageSrc } from '../../utils'
 import { getImageInfo } from '../../utils/getImageInfo'
+import i18n from '../../i18next.config'
 
 import './index.css'
 
@@ -297,16 +298,16 @@ class ImageSelector extends BaseFloat {
 
   renderHeader () {
     const tabs = [{
-      label: 'Select',
+      label: i18n.t('panels.imageSelector.select'),
       value: 'select'
     }, {
-      label: 'Embed link',
+      label: i18n.t('panels.imageSelector.embedLink'),
       value: 'link'
     }]
 
     if (this.unsplash) {
       tabs.push({
-        label: 'Unsplash',
+        label: i18n.t('panels.imageSelector.unsplash'),
         value: 'unsplash'
       })
     }
@@ -337,13 +338,13 @@ class ImageSelector extends BaseFloat {
               this.handleSelectButtonClick()
             }
           }
-        }, 'Choose an Image'),
-        h('span.description', 'Choose image from your computer.')
+        }, i18n.t('panels.imageSelector.chooseAnImage')),
+        h('span.description', i18n.t('panels.imageSelector.chooseAnImage_description'))
       ]
     } else if (tab === 'link') {
       const altInput = h('input.alt', {
         props: {
-          placeholder: 'Alt text',
+          placeholder: i18n.t('panels.imageSelector.altText'),
           value: alt
         },
         on: {
@@ -360,7 +361,7 @@ class ImageSelector extends BaseFloat {
       })
       const srcInput = h('input.src', {
         props: {
-          placeholder: 'Image link or local path',
+          placeholder: i18n.t('panels.imageSelector.imageLinkOrLocalPath'),
           value: src
         },
         on: {
@@ -380,7 +381,7 @@ class ImageSelector extends BaseFloat {
       })
       const titleInput = h('input.title', {
         props: {
-          placeholder: 'Image title',
+          placeholder: i18n.t('panels.imageSelector.imageTitle'),
           value: title
         },
         on: {
@@ -406,22 +407,22 @@ class ImageSelector extends BaseFloat {
             this.handleLinkButtonClick()
           }
         }
-      }, 'Embed Image')
+      }, i18n.t('panels.imageSelector.embedImage'))
       const bottomDes = h('span.description', [
-        h('span', 'Paste web image or local image path. Use '),
+        h('span', i18n.t('panels.imageSelector.pasteImage_description')),
         h('a', {
           on: {
             click: event => {
               this.toggleMode()
             }
           }
-        }, `${isFullMode ? 'simple mode' : 'full mode'}.`)
+        }, `${isFullMode ? i18n.t('panels.imageSelector.simpleMode') : i18n.t('panels.imageSelector.fullMode')}}.`)
       ])
       bodyContent = [inputWrapper, embedButton, bottomDes]
     } else {
       const searchInput = h('input.search', {
         props: {
-          placeholder: 'Search photos on Unsplash'
+          placeholder: i18n.t('panels.imageSelector.search')
         },
         on: {
           keydown: (event) => {
@@ -439,7 +440,7 @@ class ImageSelector extends BaseFloat {
         const loadingCom = h('div.ag-plugin-loading')
         bodyContent.push(loadingCom)
       } else if (this.photoList.length === 0) {
-        const noDataCom = h('div.no-data', 'No result...')
+        const noDataCom = h('div.no-data', i18n.t('panels.imageSelector.noResult'))
         bodyContent.push(noDataCom)
       } else {
         const photos = this.photoList.map(photo => {
@@ -484,7 +485,7 @@ class ImageSelector extends BaseFloat {
           return h('div.photo', [imageWrapper, desCom])
         })
         const photoWrapper = h('div.photos-wrapper', photos)
-        const moreCom = h('div.more', 'Search for more photos...')
+        const moreCom = h('div.more', i18n.t('panels.imageSelector.searchMore'))
         bodyContent.push(photoWrapper, moreCom)
       }
     }

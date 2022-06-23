@@ -117,11 +117,13 @@
       "flowChart": "Flow Chart",
       "seqDiagram": "Sequence Diagram",
       "mermaid": "Mermaid",
+      "plantUml": "PlantUML Diagram",
       "_descriptions": {
         "vega": "Render flow chart by vega-lite.js.",
         "flowChart": "Render flow chart by flowchart.js.",
         "seqDiagram": "Render sequence diagram by js-sequence.",
-        "mermaid": "Render Diagram by mermaid."
+        "mermaid": "Render Diagram by mermaid.",
+        "plantUml": "Render PlantUML diagrams"
       },
       "blockTypes": {
         "basicBlock": "Basic Block",
