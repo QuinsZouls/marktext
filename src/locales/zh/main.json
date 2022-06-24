@@ -148,6 +148,14 @@
       "license": "许可协议...",
       "checkUpdates": "检查更新...",
       "about": "关于 Mark Text..."
+    },
+    "marktext": {
+      "_title": "MarkText",
+      "services": "服务",
+      "hide": "隐藏 MarkText",
+      "hideOthers": "隐藏他人",
+      "showAll": "显示全部",
+      "quit": "辞职 MarkText"
     }
   }
 }

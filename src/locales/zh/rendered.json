@@ -21,7 +21,11 @@
       "preferences": "偏好设置...",
       "closeTab": "关闭标签页",
       "closeWindow": "关闭窗口",
-      "quit": "退出"
+      "quit": "退出",
+      "newFile": "新文件",
+      "newDirectory": "新目录",
+      "moveToTrash": "移至垃圾桶",
+      "showInFolder": "在文件夹中显示"
     },
     "edit": {
       "_title": "编辑(&E)",
@@ -119,6 +123,7 @@
       "showTabBar": "显示标签栏",
       "toggleToc": "显示/隐藏目录",
       "showDevTools": "显示开发者工具",
+      "reloadImages": "重新加载图像",
       "reload": "重新加载"
     },
     "themes": {

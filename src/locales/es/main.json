@@ -5,7 +5,7 @@
       "newBlankTab": "Nuevo Tab",
       "newWindow": "Nueva ventana",
       "openFile": "Abrir archivo...",
-      "openFolder": "Abrir Directory...",
+      "openFolder": "Abrir Directorio...",
       "openRecent": "Abrir Reciente",
       "clearRecentlyUsed": "Limpiar usados recientemente",
       "save": "Guardar",
@@ -53,60 +53,60 @@
       "lf": "Line feed (LF)"
     },
     "format": {
-      "_title": "&Format",
-      "bold": "Bold",
-      "italic": "Italic",
-      "underline": "Underline",
+      "_title": "&Formato",
+      "bold": "Negrita",
+      "italic": "Cursiva",
+      "underline": "Subrayado",
       "superscript": "Superscript",
-      "subscript": "Subscript",
-      "highlight": "Highlight",
-      "inlineCode": "Inline Code",
-      "inlineMath": "Inline Math",
-      "strike": "Strikethrough",
-      "hyperlink": "Hyperlink",
-      "image": "Image",
-      "clear": "Clear Formatting"
+      "subscript": "Subíndice",
+      "highlight": "Resaltar",
+      "inlineCode": "Código en linea",
+      "inlineMath": "Matemáticas en línea",
+      "strike": "Tachado",
+      "hyperlink": "Hipervínculo",
+      "image": "Imagen",
+      "clear": "Limpiar formato"
     },
     "paragraph": {
       "_title": "&Párrafo",
       "_title_simple": "Párrafo",
-      "heading1": "Heading 1",
-      "heading2": "Heading 2",
-      "heading3": "Heading 3",
-      "heading4": "Heading 4",
-      "heading5": "Heading 5",
-      "heading6": "Heading 6",
-      "promoteHeading": "Promote Heading",
-      "demoteHeading": "Demote Heading",
-      "table": "Table",
+      "heading1": "Encabezado 1",
+      "heading2": "Encabezado 2",
+      "heading3": "Encabezado 3",
+      "heading4": "Encabezado 4",
+      "heading5": "Encabezado 5",
+      "heading6": "Encabezado 6",
+      "promoteHeading": "Promover el encabezamiento",
+      "demoteHeading": "Desplazar el encabezado",
+      "table": "Tabla",
       "codeFences": "Code Fences",
       "blockquote": "Quote Block",
-      "mathBlock": "Math Block",
-      "htmlBlock": "HTML Block",
-      "orderList": "Ordered List",
-      "bulletList": "Bullet List",
-      "taskList": "Task List",
+      "mathBlock": "Bloque de matemáticas",
+      "htmlBlock": "Bloque de HTML",
+      "orderList": "Lista ordenada",
+      "bulletList": "Lista de balas",
+      "taskList": "Lista de tareas",
       "looseListItem": "Loose List Item",
-      "normalParagraph": "Paragraph",
-      "newParagraph": "New Paragraph",
-      "horizontalLine": "Horizontal Line",
+      "normalParagraph": "Párrafo",
+      "newParagraph": "Nuevo Párrafo",
+      "horizontalLine": "Linea horizontal",
       "frontMatter": "Front Matter",
-      "turnInto": "Turn Into",
-      "vega": "Vega Chart",
-      "flowChart": "Flow Chart",
-      "seqDiagram": "Sequence Diagram",
+      "turnInto": "Convertir En",
+      "vega": "Gráfico Vega",
+      "flowChart": "Gráfico Flow",
+      "seqDiagram": "Diagrama de secuencia",
       "mermaid": "Mermaid",
       "_descriptions": {
-        "vega": "Render flow chart by vega-lite.js.",
-        "flowChart": "Render flow chart by flowchart.js.",
-        "seqDiagram": "Render sequence diagram by js-sequence.",
-        "mermaid": "Render Diagram by mermaid."
+        "vega": "Renderizar Gráfico flow con vega-lite.js.",
+        "flowChart": "Renderizar Gráfico flow con flowchart.js.",
+        "seqDiagram": "Renderizar Diagrama de secuencia con js-sequence.",
+        "mermaid": "Renderizar Diagrama con mermaid."
       },
       "blockTypes": {
-        "basicBlock": "Basic Block",
-        "advancedBlock": "Advanced Block",
-        "listBlock": "List Block",
-        "diagram": "Diagram"
+        "basicBlock": "Bloque básico",
+        "advancedBlock": "Bloque avanzado",
+        "listBlock": "Bloque de lista",
+        "diagram": "Diagrama"
       }
     },
     "view": {
@@ -119,7 +119,8 @@
       "showTabBar": "Mostrar barra superior",
       "toggleToc": "Toggle Table of Contents",
       "showDevTools": "Mostrar opciones de desarrollo",
-      "reload": "Recargar"
+      "reload": "Recargar",
+      "reloadImages": "Recargar Imágenes"
     },
     "themes": {
       "_title": "&Tema"
@@ -148,6 +149,14 @@
       "license": "Licencia...",
       "checkUpdates": "Buscar actualizaciones...",
       "about": "Sobre Mark Text..."
+    },
+    "marktext": {
+      "_title": "MarkText",
+      "services": "Servicios",
+      "hide": "Ocultar MarkText",
+      "hideOthers": "Ocultar otros",
+      "showAll": "Mostrar Todo",
+      "quit": "Quitar MarkText"
     }
   }
 }

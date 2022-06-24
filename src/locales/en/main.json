@@ -119,6 +119,7 @@
       "showTabBar": "Show Tab Bar",
       "toggleToc": "Toggle Table of Contents",
       "showDevTools": "Show Developer Tools",
+      "reloadImages": "Reload Images",
       "reload": "Reload"
     },
     "themes": {
@@ -148,6 +149,14 @@
       "license": "License...",
       "checkUpdates": "Check for updates...",
       "about": "About Mark Text..."
+    },
+    "marktext": {
+      "_title": "MarkText",
+      "services": "Services",
+      "hide": "Hide MarkText",
+      "hideOthers": "Hide Others",
+      "showAll": "Show All",
+      "quit": "Quit MarkText"
     }
   }
 }

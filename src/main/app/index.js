@@ -183,7 +183,7 @@ class App {
     })
 
     if (isOsx) {
-      app.dock.setMenu(dockMenu)
+      app.dock.setMenu(dockMenu())
     } else if (isWindows) {
       app.setJumpList([{
         type: 'recent'

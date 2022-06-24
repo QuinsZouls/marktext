@@ -21,7 +21,11 @@
       "preferences": "Preferences...",
       "closeTab": "Close Tab",
       "closeWindow": "Close Window",
-      "quit": "Quit"
+      "quit": "Quit",
+      "newFile": "New File",
+      "newDirectory": "New Directory",
+      "moveToTrash": "Move To Trash",
+      "showInFolder": "Show In Folder"
     },
     "edit": {
       "_title": "&Edit",
