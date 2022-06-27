@@ -1,19 +1,22 @@
 import { getCurrentWindow, Menu as RemoteMenu, MenuItem as RemoteMenuItem } from '@electron/remote'
 import {
-  SEPARATOR,
-  NEW_FILE,
-  NEW_DIRECTORY,
-  COPY,
-  CUT,
-  PASTE,
-  RENAME,
-  DELETE,
-  SHOW_IN_FOLDER
+  getItems
 } from './menuItems'
 
 export const showContextMenu = (event, hasPathCache) => {
   const menu = new RemoteMenu()
   const win = getCurrentWindow()
+  const {
+    SEPARATOR,
+    NEW_FILE,
+    NEW_DIRECTORY,
+    COPY,
+    CUT,
+    PASTE,
+    RENAME,
+    DELETE,
+    SHOW_IN_FOLDER
+  } = getItems()
   const CONTEXT_ITEMS = [
     NEW_FILE,
     NEW_DIRECTORY,

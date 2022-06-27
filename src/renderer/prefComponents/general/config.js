@@ -1,10 +1,4 @@
-export const titleBarStyleOptions = [{
-  label: 'Custom',
-  value: 'custom'
-}, {
-  label: 'Native',
-  value: 'native'
-}]
+import i18n from '@/i18next.config'
 
 export const zoomOptions = [{
   label: '50.0%',
@@ -46,27 +40,39 @@ export const zoomOptions = [{
   label: '200.0%',
   value: 2.0
 }]
-
-export const fileSortByOptions = [{
-  label: 'Creation time',
-  value: 'created'
-}, {
-  label: 'Modification time',
-  value: 'modified'
-}, {
-  label: 'Title',
-  value: 'title'
-}]
-
-export const languageOptions = [{
-  label: 'English',
-  value: 'en'
-},
-{
-  label: 'Spanish',
-  value: 'es'
-},
-{
-  label: 'Chinese',
-  value: 'zh'
-}]
+export const i18nOptions = () => {
+  const titleBarStyleOptions = [{
+    label: i18n.t('preferences.general.titleBarStyle.custom'),
+    value: 'custom'
+  }, {
+    label: i18n.t('preferences.general.titleBarStyle.native'),
+    value: 'native'
+  }]
+  const fileSortByOptions = [{
+    label: i18n.t('preferences.general.fileSortBy.created'),
+    value: 'created'
+  }, {
+    label: i18n.t('preferences.general.fileSortBy.modified'),
+    value: 'modified'
+  }, {
+    label: i18n.t('preferences.general.fileSortBy.title'),
+    value: 'title'
+  }]
+  const languageOptions = [{
+    label: i18n.t('preferences.general.english'),
+    value: 'en'
+  },
+  {
+    label: i18n.t('preferences.general.spanish'),
+    value: 'es'
+  },
+  {
+    label: i18n.t('preferences.general.chineseSimp'),
+    value: 'zh'
+  }]
+  return ({
+    languageOptions,
+    fileSortByOptions,
+    titleBarStyleOptions
+  })
+}

@@ -2,6 +2,10 @@
   <div class="pref-cb-legal-notices">
     <el-checkbox v-model="uploaderService.agreedToLegalNotices"></el-checkbox>
     <span>
+      <!--
+        TODO add i18n translation with interpolation
+        See: https://www.i18next.com/translation-function/interpolation
+      -->
       By using {{ uploaderService.name }}, you agree to {{ uploaderService.name }}'s
       <span class="link" @click="openUrl(uploaderService.privacyUrl)">Privacy Statement</span>
       and

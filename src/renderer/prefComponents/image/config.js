@@ -1,10 +1,12 @@
-export const imageActions = [{
-  label: 'Upload image to cloud using selected uploader (must be configured below)',
+import i18n from '@/i18next.config'
+
+export const imageActions = () => ([{
+  label: i18n.t('preferences.image.imageInsertAction.upload'),
   value: 'upload'
 }, {
-  label: 'Copy image to designated relative assets or global local folder',
+  label: i18n.t('preferences.image.imageInsertAction.folder'),
   value: 'folder'
 }, {
-  label: 'Keep original location',
+  label: i18n.t('preferences.image.imageInsertAction.path'),
   value: 'path'
-}]
+}])

@@ -1,6 +1,7 @@
 import { ENCODING_NAME_MAP } from 'common/encoding'
+import i18n from '@/i18next.config'
 
-export const tabSizeOptions = [{
+const tabSizeOptions = [{
   label: '1',
   value: 1
 }, {
@@ -14,36 +15,36 @@ export const tabSizeOptions = [{
   value: 4
 }]
 
-export const endOfLineOptions = [{
-  label: 'Default',
+const endOfLineOptions = [{
+  label: i18n.t('preferences.editor.endOfLine.default'),
   value: 'default'
 }, {
-  label: 'Carriage return and line feed (CRLF)',
+  label: i18n.t('preferences.editor.endOfLine.crlf'),
   value: 'crlf'
 }, {
-  label: 'Line feed (LF)',
+  label: i18n.t('preferences.editor.endOfLine.lf'),
   value: 'lf'
 }]
 
-export const trimTrailingNewlineOptions = [{
-  label: 'Trim all trailing',
+const trimTrailingNewlineOptions = [{
+  label: i18n.t('preferences.editor.trimTrailingNewline.all'),
   value: 0
 }, {
-  label: 'Ensure exactly one trailing',
+  label: i18n.t('preferences.editor.trimTrailingNewline.exactlyOne'),
   value: 1
 }, {
-  label: 'Preserve style of original document',
+  label: i18n.t('preferences.editor.trimTrailingNewline.originalStyle'),
   value: 2
 }, {
-  label: 'Do nothing',
+  label: i18n.t('preferences.editor.trimTrailingNewline.doNothing'),
   value: 3
 }]
 
-export const textDirectionOptions = [{
-  label: 'Left to Right',
+const textDirectionOptions = [{
+  label: i18n.t('preferences.editor.textDirection.ltr'),
   value: 'ltr'
 }, {
-  label: 'Right to Left',
+  label: i18n.t('preferences.editor.textDirection.rtl'),
   value: 'rtl'
 }]
 
@@ -59,3 +60,10 @@ export const getDefaultEncodingOptions = () => {
   }
   return defaultEncodingOptions
 }
+
+export const getEditorOptions = () => ({
+  textDirectionOptions,
+  trimTrailingNewlineOptions,
+  endOfLineOptions,
+  tabSizeOptions
+})

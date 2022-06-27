@@ -1,16 +1,19 @@
 <template>
   <div class="pref-image-uploader">
-    <h5>Uploader</h5>
+    <h4>{{ $t('preferences.imageUploader._title') }}</h4>
     <section class="current-uploader">
-      <div v-if="isValidUploaderService(currentUploader)">The current image uploader is
+      <div v-if="isValidUploaderService(currentUploader)">{{ $t('preferences.imageUploader.currentUploaderIs') }}
         {{ getServiceNameById(currentUploader) }}.</div>
-      <span v-else>Currently no uploader is selected. Please select an uploader and config
-        it.</span>
+      <span v-else>{{ $t('preferences.imageUploader.noUploaderSelected') }}</span>
     </section>
     <section class="configration">
       <cur-select :value="currentUploader" :options="uploaderOptions"
         :onChange="value => setCurrentUploader(value)"></cur-select>
       <div class="picgo" v-if="currentUploader === 'picgo'">
+        <!--
+          TODO add i18n translation with interpolation
+          See: https://www.i18next.com/translation-function/interpolation
+        -->
         <div v-if="!picgoExists" class="warning">
           Your system does not have <span class="link"
             @click="open('https://github.com/PicGo/PicGo-Core')">picgo</span> installed, please
@@ -21,32 +24,33 @@
         <div class="warning">Github will be removed in a future version, please use picgo</div>
         <div class="form-group">
           <div class="label">
-            GitHub token:
+            {{ $t('preferences.imageUploader.GitHub.token') }}
             <el-tooltip class="item" effect="dark"
-              content="The token is saved by Keychain on macOS, Secret Service API/libsecret on Linux and Credential Vault on Windows"
+              :content="$t('preferences.imageUploader.GitHub.tokenNotice')"
               placement="top-start">
               <i class="el-icon-info"></i>
             </el-tooltip>
           </div>
-          <el-input v-model="githubToken" placeholder="Input token" size="mini"></el-input>
+          <el-input v-model="githubToken" :placeholder="$t('preferences.imageUploader.GitHub.tokenPlaceholder')" size="mini"></el-input>
         </div>
         <div class="form-group">
-          <div class="label">Owner name:</div>
+          <div class="label">{{ $t('preferences.imageUploader.GitHub.owner') }}</div>
           <el-input v-model="github.owner" placeholder="owner" size="mini"></el-input>
         </div>
         <div class="form-group">
-          <div class="label">Repo name:</div>
+          <div class="label">{{ $t('preferences.imageUploader.GitHub.repo') }}</div>
           <el-input v-model="github.repo" placeholder="repo" size="mini"></el-input>
         </div>
         <div class="form-group">
-          <div class="label">Branch name (optional):</div>
+          <div class="label">{{ $t('preferences.imageUploader.GitHub.branch') }}</div>
           <el-input v-model="github.branch" placeholder="branch" size="mini"></el-input>
         </div>
         <legal-notices-checkbox class="github"
           :class="[{ 'error': legalNoticesErrorStates.github }]"
           :uploaderService="uploadServices.github"></legal-notices-checkbox>
         <div class="form-group">
-          <el-button size="mini" :disabled="githubDisable" @click="save('github')">Save
+          <el-button size="mini" :disabled="githubDisable" @click="save('github')">
+            {{ $t('preferences.imageUploader.save') }}
           </el-button>
         </div>
       </div>
@@ -60,7 +64,8 @@
           <el-input v-model="cliScript" placeholder="Script absolute path" size="mini"></el-input>
         </div>
         <div class="form-group">
-          <el-button size="mini" :disabled="cliScriptDisable" @click="save('cliScript')">Save
+          <el-button size="mini" :disabled="cliScriptDisable" @click="save('cliScript')">
+            {{ $t('preferences.imageUploader.save') }}
           </el-button>
         </div>
       </div>
