@@ -164,10 +164,14 @@
       "autoSave": "Automatically save document changes",
       "autoSaveDelay": "Delay following document edit before automatically saving (milliseconds)",
       "titleBarStyle": {
-        "_title": "Title bar style (requires restart)",
+        "_title": "Title bar style",
+        "notes": "requires restart",
         "custom": "Custom",
         "native": "Native"
       },
+      "window": "Window:",
+      "zoom": "Zoom",
+      "sidebar": "Sidebar: ",
       "openFilesInNewWindow": "Open files in new window",
       "openFolderInNewWindow": "Open folders in new window",
       "hideScrollbar": "Hide scrollbars",
@@ -185,20 +189,31 @@
         "selectDefaultDirectoryToOpen": "Select Folder",
         "blank": "Open a blank page"
       },
-      "languageForUI": "Language for user interface (requires restart or opening new window)"
+      "languageForUI": "Language for user interface",
+      "spanish": "Spanish",
+      "english": "English",
+      "chineseSimp": "Chinese Simplified"
     },
     "editor": {
       "_title": "Editor",
-      "fontSize": "Font size in text editor",
+      "textEditorSettings": "Text editor settings: ",
+      "codeBlockSettings": "Code block settings",
+      "maxWidthTextEditor": "Maximum width of text editor",
+      "maxWidthTextEditorNotes": "Leave empty for theme default, otherwise use number with unit suffix, which is one of 'ch' for characters, 'px' for pixels, or '%' for percentage.",
+      "fontSize": "Font size: ",
+      "writingBehavior": "Writing Behavior:",
       "lineHeight": "Line height in text editor",
       "editorFontFamily": "Font for text editor",
       "codeFontSize": "Font size in code blocks",
       "codeFontFamily": "Font for code blocks",
-      "codeBlockLineNumbers": "Show line numbers in code blocks",
+      "BlockLineNumbers": "Show line numbers",
       "trimUnnecessaryCodeBlockEmptyLines": "Remove leading and trailing empty lines in code blocks",
       "autoPairBracket": "Automatically close brackets when writing",
       "autoPairMarkdownSyntax": "Automatically complete markdown syntax",
       "autoPairQuote": "Automatically close quotation marks",
+      "fileRepresentation": "File representation: ",
+      "preferredTabWidth": "Preferred tab width",
+      "lineSeparatorType": "Line separator type",
       "endOfLine": {
         "_title": "Line separator type",
         "default": "Default",
@@ -214,6 +229,7 @@
         "originalStyle": "Preserve style of original document",
         "doNothing": "Do nothing"
       },
+      "misc": "Misc:",
       "textDirection": {
         "_title": "Text direction",
         "ltr": "Left to Right",

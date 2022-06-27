@@ -165,10 +165,14 @@
       "autoSave": "自动保存文档更改",
       "autoSaveDelay": "编辑后自动保存的时间间隔（毫秒）",
       "titleBarStyle": {
-        "_title": "标题栏样式（重启生效）",
+        "_title": "标题栏样式",
+        "notes": "重启生效",
         "custom": "自有",
         "native": "原生"
       },
+      "window": "Window:",
+      "zoom": "Zoom",
+      "sidebar": "Sidebar: ",
       "openFilesInNewWindow": "在新窗口打开文档",
       "openFolderInNewWindow": "在新窗口打开文件夹",
       "hideScrollbar": "隐藏滚动条",
@@ -186,7 +190,10 @@
         "selectDefaultDirectoryToOpen": "选择默认打开的文件夹",
         "blank": "新建空白文档"
       },
-      "languageForUI": "界面语言（重启程序或打开新窗口时生效）"
+      "languageForUI": "界面语言（重启程序或打开新窗口时生效）",
+      "spanish": "Spanish",
+      "english": "English",
+      "chineseSimp": "Chinese Simplified"
     },
     "editor": {
       "_title": "编辑器",
@@ -200,6 +207,9 @@
       "autoPairBracket": "自动录入成对括号",
       "autoPairMarkdownSyntax": "自动语法补全",
       "autoPairQuote": "自动录入成对引号",
+      "fileRepresentation": "File representation: ",
+      "preferredTabWidth": "Preferred tab width",
+      "lineSeparatorType": "Line separator type",
       "endOfLine": {
         "_title": "行尾序列",
         "default": "默认",
@@ -215,6 +225,7 @@
         "originalStyle": "保持原文档风格",
         "doNothing": "不作处理"
       },
+      "misc": "Misc:",
       "textDirection": {
         "_title": "文本方向",
         "ltr": "从左至右",
